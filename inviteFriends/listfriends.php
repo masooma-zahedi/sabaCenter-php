@@ -22,6 +22,7 @@ if(isset($_GET['id'])){
     mysqli_query($conn,$sqlsendadd);
     $sqldelete = "DELETE FROM newfriends_tbl WHERE  user_id = '$id'";
     mysqli_query($conn, $sqldelete);
+    header("location:listfriends.php?email=$email_in");
 
 }
 
@@ -29,11 +30,7 @@ if(isset($_GET['delete'])){
     $id = $_GET['delete'];
     $sqldelete = "DELETE FROM newfriends_tbl WHERE  user_id = '$id'";
     mysqli_query($conn, $sqldelete);
-    header("location:listfriends.php?delete=deleted");
-    // if(!$resinviter = mysqli_fetch_assoc($rowinviter)){
-    //     echo "its finished";
-    // }
-
+    header("location:listfriends.php?email=$email_in");
 }
 
 
