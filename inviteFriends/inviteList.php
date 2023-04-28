@@ -24,10 +24,6 @@ $result = mysqli_query($conn, $sql);
 <body>
     <div class="container">
         <h2 class="m-5">Invite Friends</h2>
-        <div>
-            <a href="listfriends.php" class="btn btn-warning p-2 m-2">listfriends page</a>
-            <a href="test.php" class="btn btn-warning p-2 m-2">test page</a>
-        </div>
         <table class="table text-center border">
             <thead >
                 <tr>

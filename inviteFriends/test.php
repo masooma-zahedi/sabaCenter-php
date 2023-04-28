@@ -41,10 +41,6 @@ if (isset($_POST['add'])) {
 
     <div class="container">
         <h2>Invite Friends : </h2>
-        <div>
-            <a href="inviteList.php" class="btn btn-warning p-2 m-2">inviteList page</a>
-            <a href="listfriends.php" class="btn btn-warning p-2 m-2">listfriends page</a>
-        </div>
         <form method="post" action="" id="add_info">
             <div class="form-row row">
                 <div class="form-group col-12 col-md-6 mb-3">

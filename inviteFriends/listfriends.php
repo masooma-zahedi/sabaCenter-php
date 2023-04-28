@@ -49,10 +49,6 @@ if(isset($_GET['delete'])){
 
 <body>
     <div class="container">
-        <div>
-            <a href="inviteList.php" class="btn btn-warning p-2 m-2">inviteList page</a>
-            <a href="test.php" class="btn btn-warning p-2 m-2">test page</a>
-        </div>
         <div class="card-body bg-primary rounded h5 text-light">
             <?php echo $resinviter['name']." ".$resinviter['lastname']; ?> introduce : 
         </div>
