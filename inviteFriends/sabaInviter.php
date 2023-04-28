@@ -5,7 +5,7 @@ if (isset($_POST["btn"])) {
     $conn = mysqli_connect("localhost", "root", "", "php_test");
     $sql = "INSERT INTO invitefriends (name,lastname,email,numPeople) VALUES ('$data[name]','$data[lastname]','$data[email]','$data[numPeople]')";
     mysqli_query($conn, $sql);
-    header("location:test.php?email=$data[email] ");
+    header("location:sabaInviter.php?email=$data[email] ");
 }
 if (isset($_POST['add'])) {
     $email = $_GET['email'];

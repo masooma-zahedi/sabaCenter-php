@@ -11,7 +11,7 @@ if(SHA1($data['password']) == $res['password']){
     session_start();
     $_SESSION['name']= $res['username'];
     // echo "good job";
-    header("location:listcontact.php?login=true");
+    header("location:../contactF/listcontact.php?login=true");
 }
 
 
