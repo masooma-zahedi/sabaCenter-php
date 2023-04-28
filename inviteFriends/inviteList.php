@@ -2,12 +2,6 @@
 $conn = mysqli_connect("localhost", "root", "", "php_test");
 $sql = "SELECT * FROM invitefriends";
 $result = mysqli_query($conn, $sql);
-// $row = mysqli_fetch_assoc($result);
-// var_dump($row);
-// while ($row = mysqli_fetch_assoc($result)) {
-//     var_dump($row);
-//     echo "<br/>";
-// }
 ?>
 
 <!DOCTYPE html>
