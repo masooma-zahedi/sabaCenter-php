@@ -11,6 +11,7 @@
 </head>
 
 <body>
+    <!-- header -->
     <div class="header container-fluid" style="background-color :#e3f2fd">
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light h2">
@@ -44,9 +45,10 @@
             </nav>
         </div>
     </div>
-
-
+    <!-- main content -->
     <div class="maincontent"></div>
+
+    <!-- footer -->
     <div class="footer"></div>
 
 

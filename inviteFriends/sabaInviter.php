@@ -36,12 +36,46 @@ if (isset($_POST['add'])) {
 </head>
 
 <body>
+    <!-- header -->
+    <div class="header container-fluid" style="background-color :#e3f2fd">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light h2">
+                <a class="navbar-brand" href="../sabacenter.php">Saba Center</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse h5" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item ">
+                            <a class="nav-link" href="../sabacenter.php">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../contactF/formContact.php">Contact Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="../inviteFriends/sabaInviter.php">Invite Friends</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="#">Donate</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link " href="../login/login.php">Login</a>
+                        </li>
 
-
-
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- end header -->
     <div class="container">
-        <h2>Invite Friends : </h2>
-        <form method="post" action="" id="add_info">
+        <div class="card my-5 ">
+            <div class="card-body h3 text-primary mx-auto"> Invite Friends :</div>
+        </div>
+         <form method="post" action="" id="add_info">
             <div class="form-row row">
                 <div class="form-group col-12 col-md-6 mb-3">
                     <label htmlFor="inputFname4">First Name <span class='text-danger'>*</span> </label>

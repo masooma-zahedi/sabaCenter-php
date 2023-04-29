@@ -9,13 +9,14 @@ if (isset($_SESSION['name'])) {
     header("location:../contactF/formContact.php?login=error1");
 }
 
-// ***************** inviter page php**************88
+// ***************** inviter page php**************
 $conn2 = mysqli_connect("localhost", "root", "", "php_test");
 $sql2 = "SELECT * FROM invitefriends";
 $result2 = mysqli_query($conn2, $sql2);
 
-// ******************** list new friends page php *************
-if(isset($_GET['email'])){
+// ******************** list new friends page php **********************
+           /////////////// showing new friends////////////////
+if (isset($_GET['email'])) {
     $email_in = $_GET['email'];
 }
 // echo $email_in . "<br/>";
@@ -25,28 +26,27 @@ $rows = mysqli_query($conn, $sql1);
 $sql2 = "SELECT * FROM invitefriends WHERE email = '$email_in' ";
 $rowinviter = mysqli_query($conn, $sql2);
 $resinviter = mysqli_fetch_assoc($rowinviter);
-// var_dump($resinviter) ;
-// 
 
-if(isset($_GET['id'])){
+
+            ///////////// Add new friends to data base////////////
+if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $sqladd = "SELECT * FROM newfriends_tbl WHERE  user_id = '$id'";
     $rowaddinfo = mysqli_query($conn, $sqladd);
     $resadd = mysqli_fetch_assoc($rowaddinfo);
     var_dump($resadd);
     $sqlsendadd = "INSERT INTO members_tbl (name,lastname,phone,email) VALUE ('$resadd[name]', '$resadd[lastname]', '$resadd[phone]', '$resadd[email]') ";
-    mysqli_query($conn,$sqlsendadd);
+    mysqli_query($conn, $sqlsendadd);
     $sqldelete = "DELETE FROM newfriends_tbl WHERE  user_id = '$id'";
     mysqli_query($conn, $sqldelete);
-    header("location:loginPages.php?email=$email_in");
-
+    header("location:loginPages.php?email=$email_in&go=newfriend");
 }
-
-if(isset($_GET['delete'])){
+            //  ///////// delete a new friends////////////
+if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
     $sqldelete = "DELETE FROM newfriends_tbl WHERE  user_id = '$id'";
     mysqli_query($conn, $sqldelete);
-    header("location:loginPages.php?email=$email_in");
+    header("location:loginPages.php?email=$email_in&go=newfriend");
 }
 
 
@@ -102,8 +102,148 @@ if(isset($_GET['delete'])){
             </nav>
         </div>
     </div>
+    <!-- ******************** nav inside**************8 -->
+    <!-- <nav> -->
+    <div class="nav nav-tabs container" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link <?php if(!isset($_GET['go'])){echo 'active';} ?> " id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">contactUs</a>
+        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">inviterFriends</a>
+        <a class="nav-item nav-link <?php if(isset($_GET['go'])){echo 'active show';}  ?>" id="nav-contact-tab" data-toggle="tab" href="#newFriends" role="tab" aria-controls="nav-contact" aria-selected="false">New Friends</a>
+        <a class="nav-item nav-link"  id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">
+            <a href="expier.php">logout</a></a>
+    </div>
+    <!--///////////////////////////// </nav> ///////////////////////-->
+    <!-- ****************** cantact page************ -->
+    <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade <?php if(!isset($_GET["go"])){echo 'active show';} ?>" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+            <div class="container" id="contactUs">
+                <div class="card my-5 ">
+                    <div class="card-body h3 text-primary mx-auto">
+                        <p class="card-text">Contact Page</p>
+                        <!-- <a href="expier.php" class="btn btn-primary ">Logout</a> -->
+                    </div>
+                </div>
+                <table class="table border">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="border">User_id</th>
+                            <th scope="col" class="border">Name</th>
+                            <th scope="col" class="border">Last Name</th>
+                            <th scope="col" class="border">Email</th>
+                            <th scope="col" class="border">Phone</th>
+                            <th scope="col" class="border">Purpose</th>
+                            <th scope="col" class="border">Comment</th>
+                            <th scope="col" class="border">delete</th>
+                            <th scope="col" class="border">edit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        while ($row = mysqli_fetch_assoc($result1)) {
+                        ?>
+                            <tr>
+                                <th scope="row"><?php echo $row["user_id"] ?> </th>
+                                <td class="border"><?php echo $row["name"] ?></td>
+                                <td class="border"><?php echo $row["lastname"] ?></td>
+                                <td class="border"><?php echo $row["email"] ?></td>
+                                <td class="border"><?php echo $row["phone"] ?></td>
+                                <td class="border"><?php echo $row["purpose"] ?></td>
+                                <td class="border"><?php echo $row["comment"] ?></td>
+                                <td class="border"><a href="deletecontact.php?id=<?php echo $row["user_id"] ?>" class="btn btn-danger">delete</a></td>
+                                <td class="border"><a href="editcontact.php?id=<?php echo $row["user_id"] ?>" class="btn btn-warning">edit</a></td>
+                            </tr>
+                        <?php
+                        }
+                        ?>
+                    </tbody>
+                </table>
+                <?php if (isset($_GET['delete'])) { ?>
+                    <div class="card">
+                        <div class="card-body text-danger mx-auto h5">User Deleted !</div>
+                    </div>
+                <?php } ?>
+            </div>
+        </div>
+        <!-- ***************************** Invinter Friends Page************ -->
+        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+            <div class="container">
+                <div class="card my-5 ">
+                    <div class="card-body h3 text-primary mx-auto">
+                        <p class="card-text"> inviteFriends Page</p>
+                    </div>
+                </div>
+                <table class="table text-center border">
+                    <thead>
+                        <tr>
+                            <th class="border" scope="col">use_id</th>
+                            <th class="border" scope="col">Name</th>
+                            <th class="border" scope="col">Last name</th>
+                            <th class="border" scope="col">Email</th>
+                            <th class="border" scope="col">numPeople</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        while ($row = mysqli_fetch_assoc($result2)) {
+                        ?>
+                            <tr>
+                                <th class="border" scope="row"><?php echo $row["user_id"] ?> </th>
+                                <td class="border"><?php echo $row["name"] ?></td>
+                                <td class="border"><?php echo $row["lastname"] ?></td>
+                                <td class="border"><?php echo $row["email"] ?></td>
+                                <!-- <td class="border"><a href="loginPages.php?email=<?php echo $row['email'] ?> "> <?php echo $row["numPeople"] ?> </a></td> -->
+                                <td class="border"><a href="loginPages.php?email=<?php echo $row['email']?>&go=newfriend "> <?php echo $row["numPeople"] ?> </a></td>
+                            </tr>
+                        <?php
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- ****************************** New Friends List -->
+        <div class="tab-pane fade <?php if(isset($_GET['go'])){echo "active show";} ?>" id="newFriends" role="tabpanel" aria-labelledby="nav-contact-tab">
+            <div class="container">
+                <div class="card-body bg-primary rounded h5 text-light">
+                    <?php echo $resinviter['name'] . " " . $resinviter['lastname']; ?> introduce :
+                </div>
+                <table class="table text-center border">
+                    <thead>
+                        <tr>
+                            <th class="border" scope="col">use_id</th>
+                            <th class="border" scope="col">Name</th>
+                            <th class="border" scope="col">Last name</th>
+                            <th class="border" scope="col">phone</th>
+                            <th class="border" scope="col">add to group</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        while ($res = mysqli_fetch_assoc($rows)) {
+                        ?>
+                            <tr>
+                                <th class="border" scope="row"><?php echo $res["user_id"] ?> </th>
+                                <td class="border"><?php echo $res["name"] ?></td>
+                                <td class="border"><?php echo $res["lastname"] ?></td>
+                                <td class="border"><?php echo $res["phone"] ?></td>
+                                <td class="border">
+                                    <a href="loginPages.php?email=<?php echo $resinviter['email'] ?>&id=<?php echo $res["user_id"] ?>" class="btn btn-info btn-sm px-3">add</a>
+                                    <a href="loginPages.php?email=<?php echo $resinviter['email'] ?>&delete=<?php echo $res["user_id"] ?>" class="btn btn-danger btn-sm ">delete</a>
+                                </td>
+                            </tr>
+                        <?php
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+
     <!-- ******************** Contact Page************** -->
-    <div class="container" id="contactUs">
+    <!-- <div class="container" id="contactUs">
         <div class="card my-5 ">
             <div class="card-body h3 text-primary mx-auto">
                 <p class="card-text">Contact Page</p>
@@ -149,10 +289,10 @@ if(isset($_GET['delete'])){
                 <div class="card-body text-danger mx-auto h5">User Deleted !</div>
             </div>
         <?php } ?>
-    </div>
+    </div> -->
 
     <!-- *********************** Invite Friends Page************** -->
-    <div class="container">
+    <!-- <div class="container">
         <div class="card my-5 ">
             <div class="card-body h3 text-primary mx-auto">
                 <p class="card-text"> inviteFriends Page</p>
@@ -184,12 +324,12 @@ if(isset($_GET['delete'])){
                 ?>
             </tbody>
         </table>
-    </div>
-    
+    </div> -->
+
     <!-- ************************* List new Friends**************** -->
-    <div class="container">
+    <!-- <div class="container">
         <div class="card-body bg-primary rounded h5 text-light">
-            <?php echo $resinviter['name']." ".$resinviter['lastname']; ?> introduce : 
+            <?php echo $resinviter['name'] . " " . $resinviter['lastname']; ?> introduce :
         </div>
         <table class="table text-center border">
             <thead>
@@ -210,7 +350,6 @@ if(isset($_GET['delete'])){
                         <td class="border"><?php echo $res["name"] ?></td>
                         <td class="border"><?php echo $res["lastname"] ?></td>
                         <td class="border"><?php echo $res["phone"] ?></td>
-                        <!-- <td class="border"> -->
                         <td class="border">
                             <a href="loginPages.php?email=<?php echo $resinviter['email'] ?>&id=<?php echo $res["user_id"] ?>" class="btn btn-info btn-sm px-3">add</a>
                             <a href="loginPages.php?email=<?php echo $resinviter['email'] ?>&delete=<?php echo $res["user_id"] ?>" class="btn btn-danger btn-sm ">delete</a>
@@ -221,7 +360,7 @@ if(isset($_GET['delete'])){
                 ?>
             </tbody>
         </table>
-    </div>
+    </div> -->
 
 
     <!-- ******************************** Bootstrap Script************* -->

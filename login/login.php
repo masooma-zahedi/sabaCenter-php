@@ -33,6 +33,39 @@ if(SHA1($data['password']) == $res['password']){
 </head>
 
 <body>
+<div class="header container-fluid" style="background-color :#e3f2fd">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light h2">
+                <a class="navbar-brand" href="../sabacenter.php">Saba Center</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse h5" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item ">
+                            <a class="nav-link" href="../sabacenter.php">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../contactF/formContact.php">Contact Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="../inviteFriends/sabaInviter.php">Invite Friends</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="#">Donate</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link " href="login/login.php">Login</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
     <div class="card container my-4">
         <div class="card-body text-center text-warning h3">Login Form</div>
     </div>

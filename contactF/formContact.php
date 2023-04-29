@@ -1,15 +1,14 @@
 <?php
-if(isset($_POST['btn'])){
+if (isset($_POST['btn'])) {
     // echo "hi masooma";
     $data = $_POST["frm"];
     // echo $data["name"];
     // var_dump($data);
-    $conn = mysqli_connect("localhost","root","","php_test");
+    $conn = mysqli_connect("localhost", "root", "", "php_test");
     $sql = "INSERT INTO user_tbl (name,lastname,email,phone,purpose,comment) VALUES ('$data[name]','$data[lastname]','$data[email]','$data[phone]','$data[purpose]','$data[comment]')";
-    
-    mysqli_query($conn,$sql); 
-    header("location:formContact.php?contact='true'");
 
+    mysqli_query($conn, $sql);
+    header("location:formContact.php?contact='true'");
 }
 
 
@@ -27,6 +26,42 @@ if(isset($_POST['btn'])){
 </head>
 
 <body>
+    <!-- header -->
+    <div class="header container-fluid" style="background-color :#e3f2fd">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light h2">
+                <a class="navbar-brand" href="../sabacenter.php">Saba Center</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse h5" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item ">
+                            <a class="nav-link" href="../sabacenter.php">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../contactF/formContact.php">Contact Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="../inviteFriends/sabaInviter.php">Invite Friends</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="#">Donate</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link " href="../login/login.php">Login</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- end header -->
+
     <div class="container">
         <div class="card my-5 ">
             <div class="card-body h3 text-primary mx-auto"> Please fill out the form below and we’ll be in touch. </div>
@@ -35,23 +70,23 @@ if(isset($_POST['btn'])){
             <div class="form-row row">
                 <div class="form-group col-12 col-md-6 mb-3">
                     <label htmlFor="inputFname4">First Name <span class='text-danger'>*</span> </label>
-                    <input type="text" name="frm[name]" class="form-control" id="inputFname4" placeholder="First Name"  />
+                    <input type="text" name="frm[name]" class="form-control" id="inputFname4" placeholder="First Name" />
                 </div>
                 <div class="form-group col-12 col-md-6 mb-3">
                     <label htmlFor="inputLname4">Last Name <span class='text-danger'>*</span></label>
-                    <input type="text" name="frm[lastname]" class="form-control" id="inputLname4" placeholder="Last Name"  />
+                    <input type="text" name="frm[lastname]" class="form-control" id="inputLname4" placeholder="Last Name" />
                 </div>
             </div>
             <div class="form-group mb-3">
                 <label htmlFor="exampleInputEmail1">
                     <FiMail /> Email address <span class='text-danger'>*</span>
                 </label>
-                <input type="email" name="frm[email]" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"  />
+                <input type="email" name="frm[email]" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
             <div class="form-group mb-3 row">
                 <label htmlFor="phone4" class='col-12'>Phone <span class='text-danger'>*</span></label>
-                <input type="tel" id="phone4" name="frm[phone]" maxlength="13" placeholder='+1 (201)555-0123' class='col-12 border rounded'  />
+                <input type="tel" id="phone4" name="frm[phone]" maxlength="13" placeholder='+1 (201)555-0123' class='col-12 border rounded' />
             </div>
             <div class="form-group mb-3 row">
                 <div class='h4 col-12'>Purpose of contact</div>
@@ -95,10 +130,10 @@ if(isset($_POST['btn'])){
             </div>
             <button type="submit" name="btn" class="btn btn-primary">Submit</button>
         </form>
-        <?php if(isset($_GET['contact'])){ ?>
-        <div class="card my-3">
-            <div class="card-body text-success  h6 mx-auto">Send information!</div>
-        </div>
+        <?php if (isset($_GET['contact'])) { ?>
+            <div class="card my-3">
+                <div class="card-body text-success  h6 mx-auto">Send information!</div>
+            </div>
         <?php } ?>
     </div>
 
