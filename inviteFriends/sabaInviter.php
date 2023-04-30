@@ -32,6 +32,18 @@ if (isset($_POST['add'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Saba Invite</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+       #boxcarousel{
+        height: 400px;
+        width: 700px;
+       }
+       @media only screen and (max-width: 600px) {
+        #boxcarousel{
+            height: 300px;
+            width: 400px;
+        }
+       }
+    </style>
 
 </head>
 
@@ -72,7 +84,49 @@ if (isset($_POST['add'])) {
     </div>
     <!-- end header -->
     <div class="container">
-        <div class="card my-5 ">
+        <!-- start carousel -->
+        <div class="row justify-content-center "  >
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active" id="boxcarousel">
+                        <img class="d-block w-100 h-100" src="../images/saba.jpg" alt="First slide">
+                    </div>
+                    <div class="carousel-item" id="boxcarousel">
+                        <img class="d-block w-100 h-100" src="../images/slide2.JPG" alt="Second slide">
+                    </div>
+                    <div class="carousel-item" id="boxcarousel">
+                        <img class="d-block w-100 h-100" src="../images/slide3.JPG" alt="Third slide">
+                    </div>
+                    <div class="carousel-item" id="boxcarousel">
+                        <img class="d-block w-100 h-100" src="../images/slide4.jpg" alt="Third slide">
+                    </div>
+                    <div class="carousel-item" id="boxcarousel">
+                        <img class="d-block w-100 h-100" src="../images/slide5.JPG" alt="Third slide">
+                    </div>
+                    <div class="carousel-item" id="boxcarousel">
+                        <img class="d-block w-100 h-100" src="../images/slide6.jpg" alt="Third slide">
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        <!-- end carousel -->
+        <div class="card my-4 ">
             <div class="card-body h3 text-primary mx-auto"> Invite Friends :</div>
         </div>
          <form method="post" action="" id="add_info">
@@ -117,7 +171,7 @@ if (isset($_POST['add'])) {
         <!-- ********************************************** -->
         <!-- modal ..... -->
         <!-- Button trigger modal  -->
-        <button type="button" class="btn btn-primary mt-4" data-toggle="modal" data-target="#exampleModalCenter">
+        <button type="button" class="btn btn-primary mt-2" data-toggle="modal" data-target="#exampleModalCenter">
             Add Friends
         </button>
 
@@ -173,82 +227,10 @@ if (isset($_POST['add'])) {
                 </div>
             </div>
         </div>
-
         <!-- end modal -->
-        <!-- <form action="" method="post">
-            <div id="demo ">
-                <div class="card w-50">
-                    <div class="card-header">
-                        Add Friends
-                    </div>
-                    <div class="card-body" id="show_item">
-                        <div class=' p-3 '>
-                            <div class=' h4'>
-                                person #
-                            </div>
-                            <div class="form-row row">
-                                <div class="form-group col-12 col-md-6 mb-3">
-                                    <label htmlFor="Fname4">First Name <span class='text-danger'>*</span></label>
-                                    <input type="text" name="frm[namef]" id='nameP' class="form-control" id="Fname4" placeholder="First Name" required />
-                                </div>
-                                <div class="form-group col-12 col-md-6 mb-3">
-                                    <label htmlFor="Lname4">Last Name <span class='text-danger'>*</span></label>
-                                    <input type="text" name="frm[lastnamef]" class="form-control" id="Lname4" placeholder="Last Name" />
-                                </div>
-                            </div>
-                            <div class="form-group mb-3 row">
-                                <label htmlFor="phone4" class='col-12'>Phone <span class='text-danger'>*</span></label>
-                                <input type="tel" id="phone4" name="frm[phonef]" maxlength="13" placeholder='+1 (201)555-0123' class='col-12 border rounded' />
-                            </div>
-                            <div class='d-flex justify-content-center'>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <input type="submit" name="add" id="addmore" class="btn btn-primary w-25" value="Add More">
-                    </div>
-                </div>
-            </div>
-        </form> -->
     </div>
 
-    <!-- <script>
-        function handleChange(){
-            var x = document.getElementById("nump").value;
-            document.getElementById("demo").innerHTML = "";
-            for(let i = 1; i <= x; i++){
-                let demo =document.getElementById("demo");
-                let newhtml = "";
 
-                
-                newhtml +=`<div  class=' p-3 '>
-              <div class=' h4'>
-                person # ${i}
-              </div>
-              <div class="form-row row">
-                <div class="form-group col-12 col-md-6 mb-3">
-                  <label htmlFor="Fname4">First Name <span class='text-danger'>*</span></label>
-                  <input type="text" id='nameP' class="form-control" id="Fname4" placeholder="First Name" required />
-                </div>
-                <div class="form-group col-12 col-md-6 mb-3">
-                  <label htmlFor="Lname4">Last Name <span class='text-danger'>*</span></label>
-                  <input type="text" class="form-control" id="Lname4" placeholder="Last Name"  />
-                </div>
-              </div>
-              <div class="form-group mb-3 row">
-                <label htmlFor="phone4" class='col-12'>Phone <span class='text-danger'>*</span></label>
-                <input type="tel" id="phone4" name="phone" maxlength="13" placeholder='+1 (201)555-0123' class='col-12 border rounded'  />
-              </div>
-              <div class='d-flex justify-content-center'>
-                <hr class='border border-warning' style={{ width: '80%' }} />
-              </div>
-            </div>
-            `
-
-            demo.innerHTML += newhtml;       
-        }
-        }
-    </script> -->
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

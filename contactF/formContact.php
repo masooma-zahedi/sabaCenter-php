@@ -23,6 +23,19 @@ if (isset($_POST['btn'])) {
     <meta charset="UTF-8">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+       #boxcarousel{
+        height: 400px;
+        width: 700px;
+       }
+       @media only screen and (max-width: 600px) {
+        #boxcarousel{
+            height: 300px;
+            width: 400px;
+        }
+       }
+    </style>
+
 </head>
 
 <body>
@@ -63,6 +76,48 @@ if (isset($_POST['btn'])) {
     <!-- end header -->
 
     <div class="container">
+        <!-- start carousel -->
+        <div class="row justify-content-center" >
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active" id="boxcarousel">
+                        <img class="d-block w-100 h-100" src="../images/saba.jpg" alt="First slide">
+                    </div>
+                    <div class="carousel-item" id="boxcarousel">
+                        <img class="d-block w-100 h-100" src="../images/slide2.JPG" alt="Second slide">
+                    </div>
+                    <div class="carousel-item" id="boxcarousel">
+                        <img class="d-block w-100 h-100" src="../images/slide3.JPG" alt="Third slide">
+                    </div>
+                    <div class="carousel-item" id="boxcarousel">
+                        <img class="d-block w-100 h-100" src="../images/slide4.jpg" alt="Third slide">
+                    </div>
+                    <div class="carousel-item" id="boxcarousel">
+                        <img class="d-block w-100 h-100" src="../images/slide5.JPG" alt="Third slide">
+                    </div>
+                    <div class="carousel-item" id="boxcarousel">
+                        <img class="d-block w-100 h-100" src="../images/slide6.jpg" alt="Third slide">
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        <!-- end carousel -->
         <div class="card my-5 ">
             <div class="card-body h3 text-primary mx-auto"> Please fill out the form below and we’ll be in touch. </div>
         </div>

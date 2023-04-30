@@ -7,7 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SabaCenter</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
+    <style>
+       #boxcarousel{
+        height: 400px;
+        width: 700px;
+       }
+       @media only screen and (max-width: 600px) {
+        #boxcarousel{
+            height: 300px;
+            width: 400px;
+        }
+       }
+    </style>
 </head>
 
 <body>
@@ -46,7 +57,85 @@
         </div>
     </div>
     <!-- main content -->
-    <div class="maincontent"></div>
+    <div class="container">
+        <!-- start carousel -->
+        <div class="row justify-content-center " >
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active" id="boxcarousel">
+                        <img class="d-block w-100 h-100" src="./images/saba.jpg" alt="First slide">
+                    </div>
+                    <div class="carousel-item" id="boxcarousel">
+                        <img class="d-block w-100 h-100" src="./images/slide2.JPG" alt="Second slide">
+                    </div>
+                    <div class="carousel-item" id="boxcarousel">
+                        <img class="d-block w-100 h-100" src="./images/slide3.JPG" alt="Third slide">
+                    </div>
+                    <div class="carousel-item" id="boxcarousel">
+                        <img class="d-block w-100 h-100" src="./images/slide4.jpg" alt="Third slide">
+                    </div>
+                    <div class="carousel-item" id="boxcarousel">
+                        <img class="d-block w-100 h-100" src="./images/slide5.JPG" alt="Third slide">
+                    </div>
+                    <div class="carousel-item" id="boxcarousel">
+                        <img class="d-block w-100 h-100" src="./images/slide6.jpg" alt="Third slide">
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        <!-- end carousel -->
+        <!-- about us -->
+        <div id="aboutUs" class='mt-4 container  pt-1' style=" text-align:justify">
+          <p>
+            Saba Center is a community based non-profit organization serving mainly Afghan community in Greater Houston area Texas. If you like to engage and be part of our mission, there are many ways you can contribute and help us provide better services to our community.
+          </p>
+        </div>
+        <!-- content -->
+        <div class='d-flex justify-content-center mb-2'><hr class='border border-secondary ' style={{ width: '70%' }} /></div>
+          <div class='row ' style=" text-align:justify">
+            <div class="col-12 col-lg-4 mb-3 px-3" id='contactUs' style=" text-align:justify">
+              <p class='text-justify'>
+                We would like to have contacts of as many community members in Greater Houston area as possible. If you know a new comer or someone that might not know about Saba Center, please do us a huge favor and submit their contact info clicking on the bottom below.
+              </p>
+              <a href="inviteFriends/sabaInviter.php" class='btn btn-primary btn-lg'>
+                Invite Friend
+              </a>
+            </div>
+            <div class="col-12 col-lg-4 mb-3 px-3" id='donate'>
+              <p>
+                For any means of contribution to to Saba Center programs, use the link below or click on Donate on top menu to send our financial contribution
+              </p>
+              <a href="#" class='btn btn-primary btn-lg'>
+                One Time Contribution
+              </a>
+            </div>
+            <div class="col-12 col-lg-4 mb-3 px-3" id='inviteFriends'>
+              <p>
+                We welcome any comments, suggestion and ideas you might have that can help us improve our services and reach out to more community members. To submit your suggestions, use contact-us page on top menu or click on bottom below.
+              </p>
+              <a href="contactF/formContact.php" class='btn btn-primary btn-lg'>
+                Contact Us
+              </a>
+            </div>
+          </div>
+
+    </div>
 
     <!-- footer -->
     <div class="footer"></div>

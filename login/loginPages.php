@@ -94,7 +94,7 @@ if (isset($_GET['delete'])) {
                             <a class="nav-link " href="#">Donate</a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link " href="login/login.php">Login</a>
+                            <a class="nav-link " href="login.php">Login</a>
                         </li>
 
                     </ul>
@@ -108,8 +108,9 @@ if (isset($_GET['delete'])) {
         <a class="nav-item nav-link <?php if(!isset($_GET['go'])){echo 'active';} ?> " id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">contactUs</a>
         <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">inviterFriends</a>
         <a class="nav-item nav-link <?php if(isset($_GET['go'])){echo 'active show';}  ?>" id="nav-contact-tab" data-toggle="tab" href="#newFriends" role="tab" aria-controls="nav-contact" aria-selected="false">New Friends</a>
-        <a class="nav-item nav-link"  id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">
-            <a href="expier.php">logout</a></a>
+        <!-- <a class="nav-item nav-link"  id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false"> -->
+            <a href="expier.php" class="btn btn-warning" style="line-height:2;">logout</a>
+        <!-- </a> -->
     </div>
     <!--///////////////////////////// </nav> ///////////////////////-->
     <!-- ****************** cantact page************ -->

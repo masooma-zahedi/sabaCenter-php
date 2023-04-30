@@ -1,22 +1,19 @@
 <?php
-if(isset($_POST['btn'])){
-$data = $_POST['frm'];
-$conn = mysqli_connect("localhost","root","","php_test");
-$sql = "SELECT * FROM admin_tbl WHERE username = '$data[username]'";
-$row = mysqli_query($conn,$sql);
-$res = mysqli_fetch_assoc($row);
-var_dump($res);
+if (isset($_POST['btn'])) {
+    $data = $_POST['frm'];
+    $conn = mysqli_connect("localhost", "root", "", "php_test");
+    $sql = "SELECT * FROM admin_tbl WHERE username = '$data[username]'";
+    $row = mysqli_query($conn, $sql);
+    $res = mysqli_fetch_assoc($row);
+    var_dump($res);
 
-if(SHA1($data['password']) == $res['password']){
-    session_start();
-    $_SESSION['name']= $res['username'];
-    // echo "good job";
-    // header("location:../contactF/listcontact.php?login=true");
-    header("location:loginPages.php");
-}
-
- 
-
+    if (SHA1($data['password']) == $res['password']) {
+        session_start();
+        $_SESSION['name'] = $res['username'];
+        // echo "good job";
+        // header("location:../contactF/listcontact.php?login=true");
+        header("location:loginPages.php");
+    }
 }
 ?>
 
@@ -30,10 +27,26 @@ if(SHA1($data['password']) == $res['password']){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+       #boxcarousel{
+        height: 400px;
+        width: 700px;
+
+       }
+       @media only screen and (max-width: 600px) {
+        #boxcarousel{
+            height: 300px;
+            width: 400px;
+
+        }
+       }
+    </style>
+
 </head>
 
 <body>
-<div class="header container-fluid" style="background-color :#e3f2fd">
+    <!-- start header -->
+    <div class="header container-fluid" style="background-color :#e3f2fd">
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light h2">
                 <a class="navbar-brand" href="../sabacenter.php">Saba Center</a>
@@ -58,13 +71,58 @@ if(SHA1($data['password']) == $res['password']){
                             <a class="nav-link " href="#">Donate</a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link " href="login/login.php">Login</a>
+                            <a class="nav-link " href="#">Login</a>
                         </li>
 
                     </ul>
                 </div>
             </nav>
         </div>
+    </div>
+    <!-- end header -->
+    <div class="container">
+        <!-- start carousel -->
+        <div class="row justify-content-center ">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active" id="boxcarousel">
+                        <img class="d-block w-100 h-100" src="../images/saba.jpg" alt="First slide">
+                    </div>
+                    <div class="carousel-item" id="boxcarousel">
+                        <img class="d-block w-100 h-100" src="../images/slide2.JPG" alt="Second slide">
+                    </div>
+                    <div class="carousel-item" id="boxcarousel">
+                        <img class="d-block w-100 h-100" src="../images/slide3.JPG" alt="Third slide">
+                    </div>
+                    <div class="carousel-item" id="boxcarousel">
+                        <img class="d-block w-100 h-100" src="../images/slide4.jpg" alt="Third slide">
+                    </div>
+                    <div class="carousel-item" id="boxcarousel">
+                        <img class="d-block w-100 h-100" src="../images/slide5.JPG" alt="Third slide">
+                    </div>
+                    <div class="carousel-item" id="boxcarousel">
+                        <img class="d-block w-100 h-100" src="../images/slide6.jpg" alt="Third slide">
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        <!-- end carousel -->
     </div>
     <div class="card container my-4">
         <div class="card-body text-center text-warning h3">Login Form</div>
@@ -81,25 +139,6 @@ if(SHA1($data['password']) == $res['password']){
             </div>
             <button type="submit" name="btn" class="btn btn-primary">Submit</button>
         </form>
-        <!-- <?php
-        if (isset($_GET["login"])) {
-            if ($_GET['login'] == 'error') {
-                echo '
-            <div class="cord">
-                <div class="cord-body h4 text-center text-danger">Error login !!!</div>
-            </div>';
-            } else if ($_GET['login'] == 'error1') {
-                echo '
-            <div class="cord">
-                <div class="cord-body h4 text-center text-danger">please login first!!!</div>
-            </div>';
-            }else if ($_GET['login'] == 'logout') {
-                echo '
-            <div class="cord">
-                <div class="cord-body h4 text-center text-danger">logout</div>
-            </div>';
-            }
-        } ?> -->
 
     </div>
 
