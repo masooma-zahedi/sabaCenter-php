@@ -11,7 +11,7 @@ if (isset($_POST['add'])) {
     $email = $_GET['email'];
     $data2 = $_POST['frm'];
     $conn = mysqli_connect("localhost", "root", "", "php_test");
-    $sql1 = "INSERT INTO newfriends_tbl (name,lastname,phone,email_inviter) VALUES ('$data2[namef]','$data2[lastnamef]','$data2[phonef]','$email')";
+    $sql1 = "INSERT INTO newfriends_tbl (name,lastname,phone,email_inviter,email) VALUES ('$data2[namef]','$data2[lastnamef]','$data2[phonef]','$email','$data2[emailf]')";
     mysqli_query($conn, $sql1);
 
     // header("location:listfriends.php");
@@ -209,6 +209,12 @@ if (isset($_POST['add'])) {
                                                 <label htmlFor="phone4" class='col-12'>Phone <span class='text-danger'>*</span></label>
                                                 <input type="tel" id="phone4" name="frm[phonef]" maxlength="13" placeholder='+1 (201)555-0123' class='col-12 border rounded' />
                                             </div>
+                                            <!-- adding email -->
+                                            <div class="form-group mb-3 row">
+                                                <label htmlFor="email" class='col-12'>Email <span class='text-danger'>*</span></label>
+                                                <input type="email" id="email" name="frm[emailf]"  placeholder='m@gmail.com' class='col-12 border rounded' />
+                                            </div>
+                                            <!-- end adding email -->
                                             <div class='d-flex justify-content-center'>
                                             </div>
                                         </div>

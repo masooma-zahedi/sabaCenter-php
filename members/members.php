@@ -2,9 +2,6 @@
 $conn = mysqli_connect("localhost", "root", "", "php_test");
 $sql = "SELECT * FROM members_tbl";
 $res = mysqli_query($conn, $sql);
-// while ($row = mysqli_fetch_assoc($res)) {
-//     var_dump($res) . "<br/>";
-// }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,8 +16,8 @@ $res = mysqli_query($conn, $sql);
 </head>
 
 <body>
-        <!-- header -->
-        <div class="header container-fluid" style="background-color :#e3f2fd">
+    <!-- header -->
+    <div class="header container-fluid" style="background-color :#e3f2fd">
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light h2">
                 <a class="navbar-brand" href="../sabacenter.php">Saba Center</a>
