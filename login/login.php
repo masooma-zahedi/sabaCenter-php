@@ -10,9 +10,9 @@ if (isset($_POST['btn'])) {
     if (SHA1($data['password']) == $res['password']) {
         session_start();
         $_SESSION['name'] = $res['username'];
-        // echo "good job";
+        echo "good job";
         // header("location:../contactF/listcontact.php?login=true");
-        header("location:loginPages.php");
+        header("location:loginPages.php?email=m@ms.com");
     }
 }
 ?>

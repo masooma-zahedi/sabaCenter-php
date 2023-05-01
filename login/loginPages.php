@@ -1,13 +1,25 @@
 <?php
+// you must fixed delete in cantact in loginPage.php
+ date_default_timezone_set("America/Chicago"); 
+
 // ****************** contactUs page php**********
 session_start();
 if (isset($_SESSION['name'])) {
+    include_once("../functions/function.php");
     $conn1 = mysqli_connect("localhost", "root", "", "php_test");
     $sql1 = "SELECT * FROM user_tbl";
     $result1 = mysqli_query($conn1, $sql1);
 } else {
     header("location:../contactF/formContact.php?login=error1");
 }
+if (isset($_GET['deleteC'])) {
+    $id = $_GET['deleteC'];
+    $conn = mysqli_connect("localhost","root","","php_test");
+    $sqldelete = "DELETE FROM user_tbl WHERE  user_id = '$id'";
+    mysqli_query($conn, $sqldelete);
+    header("location:loginPages.php?email=m@ms.com");
+}
+
 
 // ***************** inviter page php**************
 $conn2 = mysqli_connect("localhost", "root", "", "php_test");
@@ -134,7 +146,7 @@ if (isset($_GET['delete'])) {
                             <th scope="col" class="border">Purpose</th>
                             <th scope="col" class="border">Comment</th>
                             <th scope="col" class="border">delete</th>
-                            <th scope="col" class="border">edit</th>
+                            <th scope="col" class="border">date</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -149,19 +161,19 @@ if (isset($_GET['delete'])) {
                                 <td class="border"><?php echo $row["phone"] ?></td>
                                 <td class="border"><?php echo $row["purpose"] ?></td>
                                 <td class="border"><?php echo $row["comment"] ?></td>
-                                <td class="border"><a href="deletecontact.php?id=<?php echo $row["user_id"] ?>" class="btn btn-danger">delete</a></td>
-                                <td class="border"><a href="editcontact.php?id=<?php echo $row["user_id"] ?>" class="btn btn-warning">edit</a></td>
+                                <td><a href="loginPages.php?deleteC=<?php echo $row['user_id'] ?>" class="btn btn-danger btn-sm ">delete</a></td>
+                                <td class="border"><?php echo date("m-d-Y") ?></td>
                             </tr>
                         <?php
                         }
                         ?>
                     </tbody>
                 </table>
-                <?php if (isset($_GET['delete'])) { ?>
+                <!-- <?php if (isset($_GET['delete'])) { ?>
                     <div class="card">
                         <div class="card-body text-danger mx-auto h5">User Deleted !</div>
                     </div>
-                <?php } ?>
+                <?php } ?> -->
             </div>
         </div>
         <!-- ***************************** Invinter Friends Page************ -->
@@ -191,7 +203,6 @@ if (isset($_GET['delete'])) {
                                 <td class="border"><?php echo $row["name"] ?></td>
                                 <td class="border"><?php echo $row["lastname"] ?></td>
                                 <td class="border"><?php echo $row["email"] ?></td>
-                                <!-- <td class="border"><a href="loginPages.php?email=<?php echo $row['email'] ?> "> <?php echo $row["numPeople"] ?> </a></td> -->
                                 <td class="border"><a href="loginPages.php?email=<?php echo $row['email']?>&go=newfriend "> <?php echo $row["numPeople"] ?> </a></td>
                             </tr>
                         <?php
