@@ -5,7 +5,7 @@ date_default_timezone_set("America/Chicago");
 // ****************** contactUs page php**********
 session_start();
 if (isset($_SESSION['name'])) {
-    include_once("../functions/function.php");
+    // include_once("../functions/function.php");
     $conn1 = mysqli_connect("localhost", "root", "", "php_test");
     $sql1 = "SELECT * FROM user_tbl";
     $result1 = mysqli_query($conn1, $sql1);
@@ -174,7 +174,7 @@ $resM = mysqli_query($conn, $sql);
                                 <td class="border"><?php echo $row["purpose"] ?></td>
                                 <td class="border"><?php echo $row["comment"] ?></td>
                                 <td><a href="loginPages.php?deleteC=<?php echo $row['user_id'] ?>" class="btn btn-danger btn-sm ">delete</a></td>
-                                <td class="border"><?php echo date("m-d-Y") ?></td>
+                                <td class="border"><?php echo $row["date"] ?></td>
                             </tr>
                         <?php
                         }
@@ -198,6 +198,7 @@ $resM = mysqli_query($conn, $sql);
                             <th class="border" scope="col">Name</th>
                             <th class="border" scope="col">Last name</th>
                             <th class="border" scope="col">Email</th>
+                            <th class="border" scope="col">Date</th>
                             <th class="border" scope="col">numPeople</th>
                         </tr>
                     </thead>
@@ -210,6 +211,7 @@ $resM = mysqli_query($conn, $sql);
                                 <td class="border"><?php echo $row["name"] ?></td>
                                 <td class="border"><?php echo $row["lastname"] ?></td>
                                 <td class="border"><?php echo $row["email"] ?></td>
+                                <td class="border"><?php echo $row["date"] ?></td>
                                 <td class="border"><a href="loginPages.php?email=<?php echo $row['email'] ?>&go=newfriend "> <?php echo $row["numPeople"] ?> </a></td>
                             </tr>
                         <?php
@@ -223,7 +225,7 @@ $resM = mysqli_query($conn, $sql);
         <div class="tab-pane fade <?php if (isset($_GET['go'])) {echo "active show"; } ?>" id="newFriends" role="tabpanel" aria-labelledby="nav-contact-tab">
             <div class="container">
                 <div class="card-body bg-primary rounded h5 text-light">
-                    <?php echo $resinviter['name'] . " " . $resinviter['lastname']; ?> introduce :
+                    <?php echo $resinviter['name'] . " " . $resinviter['lastname']; ?> introduce on <?php echo $resinviter['date'] ?> :
                 </div>
                 <table class="table text-center border">
                     <thead>

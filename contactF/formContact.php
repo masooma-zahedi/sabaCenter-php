@@ -1,11 +1,14 @@
 <?php
+date_default_timezone_set("America/Chicago");
+
 if (isset($_POST['btn'])) {
     // echo "hi masooma";
     $data = $_POST["frm"];
     // echo $data["name"];
     // var_dump($data);
+    $date = date('m-d-Y');
     $conn = mysqli_connect("localhost", "root", "", "php_test");
-    $sql = "INSERT INTO user_tbl (name,lastname,email,phone,purpose,comment) VALUES ('$data[name]','$data[lastname]','$data[email]','$data[phone]','$data[purpose]','$data[comment]')";
+    $sql = "INSERT INTO user_tbl (name,lastname,email,phone,purpose,comment,date) VALUES ('$data[name]','$data[lastname]','$data[email]','$data[phone]','$data[purpose]','$data[comment]','$date')";
 
     mysqli_query($conn, $sql);
     header("location:formContact.php?contact='true'");

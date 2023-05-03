@@ -1,9 +1,10 @@
 <?php
-
+date_default_timezone_set("America/Chicago");
+$date = date("m-d-Y");
 if (isset($_POST["btn"])) {
     $data = $_POST["frm"];
     $conn = mysqli_connect("localhost", "root", "", "php_test");
-    $sql = "INSERT INTO invitefriends (name,lastname,email,numPeople) VALUES ('$data[name]','$data[lastname]','$data[email]','$data[numPeople]')";
+    $sql = "INSERT INTO invitefriends (name,lastname,email,numPeople,date) VALUES ('$data[name]','$data[lastname]','$data[email]','$data[numPeople]','$date')";
     mysqli_query($conn, $sql);
     header("location:sabaInviter.php?email=$data[email] ");
 }
