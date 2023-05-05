@@ -17,7 +17,7 @@
     <div class="header container-fluid" style="background-color :#e3f2fd">
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light h2">
-                <a class="navbar-brand" href="#">Saba Center</a>
+                <a class="navbar-brand" href="#" style="color:#0088cc;text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; ">Saba Center</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
