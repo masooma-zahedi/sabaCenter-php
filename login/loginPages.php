@@ -147,7 +147,7 @@ if (isset($_GET['deleteM'])) {
                                         echo 'active show';
                                     }  ?>" id="nav-contact-tab" data-toggle="tab" href="#newFriends" role="tab" aria-controls="nav-contact" aria-selected="false">New Friends</a>
         <!--////////// working on members///////////// -->
-        <a class="nav-item nav-link <?php if(isset($_GET)){ echo "active show";} ?>" id="nav-profile-tab" data-toggle="tab" href="#members" role="tab" aria-controls="nav-profile" aria-selected="false">members</a>
+        <a class="nav-item nav-link <?php if(isset($_GET['deleteMem'])){ echo "active show";} ?>" id="nav-profile-tab" data-toggle="tab" href="#members" role="tab" aria-controls="nav-profile" aria-selected="false">members</a>
         <!-- end members -->
         <a href="expier.php" class="btn btn-warning" style="line-height:2;">logout</a>
 
