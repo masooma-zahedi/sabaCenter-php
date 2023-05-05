@@ -99,7 +99,7 @@
         </div>
         <!-- content -->
         <div class='d-flex justify-content-center mb-2'>
-            <hr class='border border-secondary ' style={{ width: '70%' }} />
+            <hr class='border border-secondary ' style=" width: 70% " />
         </div>
         <div class='row ' style=" text-align:justify">
             <div class="col-12 col-lg-4 mb-3 px-3" id='contactUs' style=" text-align:justify">
