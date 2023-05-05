@@ -247,9 +247,15 @@ if (isset($_GET['deleteM'])) {
                                         echo "active show";
                                     } ?>" id="newFriends" role="tabpanel" aria-labelledby="nav-contact-tab">
             <div class="container">
-                <div class="card-body bg-primary rounded h5 text-light">
-                    <?php echo $resinviter['name'] . " " . $resinviter['lastname']; ?> introduce on <?php echo $resinviter['date'] ?> :
-                </div>
+                    <div class="card-body bg-primary text-center rounded h5 text-light my-5">
+                        <?php
+                            if(isset($_GET["go"])){
+                                echo $resinviter['name'] . " " . $resinviter['lastname']; ?> introduce on <?php echo $resinviter['date'] ;
+                            }else{
+                                echo "No New Friends";
+                            }
+                        ?>
+                    </div>
                 <table class="table text-center border">
                     <thead>
                         <tr>
@@ -324,8 +330,11 @@ if (isset($_GET['deleteM'])) {
             </div>
         </div>
     </div>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+
     <!-- footer -->
-    <div class="" style="margin-top: 400px;">
         <div class="footer-bottom ">
             <article class="store-info" data-section-type="storeInfo">
                 <address>West Sam Houston Parkway South Suite 103, Houston, TX</address>
@@ -335,7 +344,6 @@ if (isset($_GET['deleteM'])) {
                 <p class="powered-by text">© 2023 Saba Center </p>
             </div>
         </div>
-    </div>
 
 
 
