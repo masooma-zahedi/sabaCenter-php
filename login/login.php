@@ -11,7 +11,6 @@ if (isset($_POST['btn'])) {
         session_start();
         $_SESSION['name'] = $res['username'];
         echo "good job";
-        // header("location:../contactF/listcontact.php?login=true");
         header("location:loginPages.php?email=m@ms.com");
     }
 }
