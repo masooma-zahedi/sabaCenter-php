@@ -1,0 +1,35 @@
+#boxcarousel {
+    height: 400px;
+    width: 700px;
+}
+
+@media only screen and (max-width: 600px) {
+    #boxcarousel {
+        height: 300px;
+        width: 400px;
+    }
+    .footer-bottom {
+        margin-top: 100px !important;
+    }
+}
+
+.footer-bottom {
+    background-color: #464646;
+    padding: 30px 0;
+    margin-top: 200px;
+}
+.store-info {
+    max-width: 1170px;
+    margin: 0 auto;
+    text-align: center;
+    color: #b2b2b2;
+    padding-bottom: 20px;
+}
+.footer-copyright {
+    max-width: 1170px;
+    margin: 0 auto;
+    text-align: center;
+    padding-bottom: 0;
+    color: #b2b2b2;
+    font-size: 12px;
+}

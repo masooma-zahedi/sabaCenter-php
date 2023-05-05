@@ -7,18 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SabaCenter</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <style>
-       #boxcarousel{
-        height: 400px;
-        width: 700px;
-       }
-       @media only screen and (max-width: 600px) {
-        #boxcarousel{
-            height: 300px;
-            width: 400px;
-        }
-       }
-    </style>
+    <link rel="stylesheet" href="sabaStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 
 <body>
@@ -59,7 +50,7 @@
     <!-- main content -->
     <div class="container">
         <!-- start carousel -->
-        <div class="row justify-content-center " >
+        <div class="row justify-content-center ">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -102,43 +93,53 @@
         <!-- end carousel -->
         <!-- about us -->
         <div id="aboutUs" class='mt-4 container  pt-1' style=" text-align:justify">
-          <p>
-            Saba Center is a community based non-profit organization serving mainly Afghan community in Greater Houston area Texas. If you like to engage and be part of our mission, there are many ways you can contribute and help us provide better services to our community.
-          </p>
+            <p>
+                Saba Center is a community based non-profit organization serving mainly Afghan community in Greater Houston area Texas. If you like to engage and be part of our mission, there are many ways you can contribute and help us provide better services to our community.
+            </p>
         </div>
         <!-- content -->
-        <div class='d-flex justify-content-center mb-2'><hr class='border border-secondary ' style={{ width: '70%' }} /></div>
-          <div class='row ' style=" text-align:justify">
+        <div class='d-flex justify-content-center mb-2'>
+            <hr class='border border-secondary ' style={{ width: '70%' }} />
+        </div>
+        <div class='row ' style=" text-align:justify">
             <div class="col-12 col-lg-4 mb-3 px-3" id='contactUs' style=" text-align:justify">
-              <p class='text-justify'>
-                We would like to have contacts of as many community members in Greater Houston area as possible. If you know a new comer or someone that might not know about Saba Center, please do us a huge favor and submit their contact info clicking on the bottom below.
-              </p>
-              <a href="inviteFriends/sabaInviter.php" class='btn btn-primary btn-lg'>
-                Invite Friend
-              </a>
+                <p class='text-justify'>
+                    We would like to have contacts of as many community members in Greater Houston area as possible. If you know a new comer or someone that might not know about Saba Center, please do us a huge favor and submit their contact info clicking on the bottom below.
+                </p>
+                <a href="inviteFriends/sabaInviter.php" class='btn btn-primary btn-lg'>
+                    Invite Friend
+                </a>
             </div>
             <div class="col-12 col-lg-4 mb-3 px-3" id='donate'>
-              <p>
-                For any means of contribution to to Saba Center programs, use the link below or click on Donate on top menu to send our financial contribution
-              </p>
-              <a href="#" class='btn btn-primary btn-lg'>
-                One Time Contribution
-              </a>
+                <p>
+                    For any means of contribution to to Saba Center programs, use the link below or click on Donate on top menu to send our financial contribution
+                </p>
+                <a href="#" class='btn btn-primary btn-lg'>
+                    One Time Contribution
+                </a>
             </div>
             <div class="col-12 col-lg-4 mb-3 px-3" id='inviteFriends'>
-              <p>
-                We welcome any comments, suggestion and ideas you might have that can help us improve our services and reach out to more community members. To submit your suggestions, use contact-us page on top menu or click on bottom below.
-              </p>
-              <a href="contactF/formContact.php" class='btn btn-primary btn-lg'>
-                Contact Us
-              </a>
+                <p>
+                    We welcome any comments, suggestion and ideas you might have that can help us improve our services and reach out to more community members. To submit your suggestions, use contact-us page on top menu or click on bottom below.
+                </p>
+                <a href="contactF/formContact.php" class='btn btn-primary btn-lg'>
+                    Contact Us
+                </a>
             </div>
-          </div>
+        </div>
 
     </div>
-
+    <!-- <i class="fa fa-facebook "></i> -->
     <!-- footer -->
-    <div class="footer"></div>
+    <div class="footer-bottom">
+        <article class="store-info" data-section-type="storeInfo">
+            <address>West Sam Houston Parkway South Suite 103, Houston, TX</address>
+            713.774.808
+        </article>
+        <div class="footer-copyright">
+            <p class="powered-by text">© 2023 Saba Center </p>
+        </div>
+    </div>
 
 
 

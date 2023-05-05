@@ -26,18 +26,8 @@ if (isset($_POST['btn'])) {
     <meta charset="UTF-8">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <style>
-       #boxcarousel{
-        height: 400px;
-        width: 700px;
-       }
-       @media only screen and (max-width: 600px) {
-        #boxcarousel{
-            height: 300px;
-            width: 400px;
-        }
-       }
-    </style>
+    <link rel="stylesheet" href="../sabaStyle.css">
+
 
 </head>
 
@@ -193,6 +183,17 @@ if (isset($_POST['btn'])) {
                 <div class="card-body text-success  h6 mx-auto">Send information!</div>
             </div>
         <?php } ?>
+    </div>
+
+    <!-- footer -->
+    <div class="footer-bottom">
+        <article class="store-info" data-section-type="storeInfo">
+            <address>West Sam Houston Parkway South Suite 103, Houston, TX</address>
+            713.774.808
+        </article>
+        <div class="footer-copyright">
+            <p class="powered-by text">© 2023 Saba Center </p>
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
