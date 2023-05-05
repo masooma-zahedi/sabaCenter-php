@@ -130,15 +130,15 @@
 
     </div>
     <!-- footer -->
-    <div class="footer-bottom">
-        <article class="store-info" data-section-type="storeInfo">
-            <address>West Sam Houston Parkway South Suite 103, Houston, TX</address>
-            713.774.808
-        </article>
-        <div class="footer-copyright">
-            <p class="powered-by text">© 2023 Saba Center </p>
+        <div class="footer-bottom  ">
+            <article class="store-info" data-section-type="storeInfo">
+                <address>West Sam Houston Parkway South Suite 103, Houston, TX</address>
+                713.774.808
+            </article>
+            <div class="footer-copyright">
+                <p class="powered-by text">© 2023 Saba Center </p>
+            </div>
         </div>
-    </div>
 
 
 

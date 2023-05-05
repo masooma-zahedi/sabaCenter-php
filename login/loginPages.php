@@ -98,6 +98,7 @@ if (isset($_GET['deleteM'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>loginPages</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="../sabaStyle.css">
 
 </head>
 
@@ -323,7 +324,18 @@ if (isset($_GET['deleteM'])) {
             </div>
         </div>
     </div>
-
+    <!-- footer -->
+    <div class="border border-danger " style="margin-top: 400px;">
+        <div class="footer-bottom ">
+            <article class="store-info" data-section-type="storeInfo">
+                <address>West Sam Houston Parkway South Suite 103, Houston, TX</address>
+                713.974.808
+            </article>
+            <div class="footer-copyright">
+                <p class="powered-by text">© 2023 Saba Center </p>
+            </div>
+        </div>
+    </div>
 
 
 
