@@ -325,7 +325,7 @@ if (isset($_GET['deleteM'])) {
         </div>
     </div>
     <!-- footer -->
-    <div class="border border-danger " style="margin-top: 400px;">
+    <div class="" style="margin-top: 400px;">
         <div class="footer-bottom ">
             <article class="store-info" data-section-type="storeInfo">
                 <address>West Sam Houston Parkway South Suite 103, Houston, TX</address>
