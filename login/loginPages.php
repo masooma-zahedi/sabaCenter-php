@@ -75,6 +75,14 @@ if (isset($_GET['delete'])) {
 $conn = mysqli_connect("localhost", "root", "", "php_test");
 $sql = "SELECT * FROM members_tbl";
 $resM = mysqli_query($conn, $sql);
+// //// delete members////////////////////////
+if (isset($_GET['deleteM'])) {
+    $id = $_GET['deleteM'];
+    $sqldelete = "DELETE FROM members_tbl WHERE  user_id = '$id'";
+    mysqli_query($conn, $sqldelete);
+    header("location:loginPages.php?email=$email_in&deleteMem=true");
+}
+
 
 
 
@@ -131,7 +139,7 @@ $resM = mysqli_query($conn, $sql);
     <!-- ******************** nav inside**************8 -->
     <!-- <nav> -->
     <div class="nav nav-tabs container" id="nav-tab" role="tablist">
-        <a class="nav-item nav-link <?php if (!isset($_GET['go']) & !isset($_GET['deleteIn'])) {
+        <a class="nav-item nav-link <?php if (!isset($_GET['go']) & !isset($_GET['deleteIn']) & !isset($_GET['deleteMem'])) {
                                         echo 'active';
                                     } ?> " id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">contactUs</a>
         <a class="nav-item nav-link <?php if(isset($_GET['deleteIn'])){echo 'active show';} ?>" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">inviterFriends</a>
@@ -139,7 +147,7 @@ $resM = mysqli_query($conn, $sql);
                                         echo 'active show';
                                     }  ?>" id="nav-contact-tab" data-toggle="tab" href="#newFriends" role="tab" aria-controls="nav-contact" aria-selected="false">New Friends</a>
         <!--////////// working on members///////////// -->
-        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#members" role="tab" aria-controls="nav-profile" aria-selected="false">members</a>
+        <a class="nav-item nav-link <?php if(isset($_GET)){ echo "active show";} ?>" id="nav-profile-tab" data-toggle="tab" href="#members" role="tab" aria-controls="nav-profile" aria-selected="false">members</a>
         <!-- end members -->
         <a href="expier.php" class="btn btn-warning" style="line-height:2;">logout</a>
 
@@ -147,7 +155,7 @@ $resM = mysqli_query($conn, $sql);
     <!--///////////////////////////// </nav> ///////////////////////-->
     <!-- ****************** cantact page************ -->
     <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane fade <?php if (!isset($_GET["go"]) & !isset($_GET['deleteIn'])) {
+        <div class="tab-pane fade <?php if (!isset($_GET["go"]) & !isset($_GET['deleteIn']) & !isset($_GET['deleteMem'])) {
                                         echo 'active show';
                                     } ?>" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
             <div class="container" id="contactUs">
@@ -167,8 +175,8 @@ $resM = mysqli_query($conn, $sql);
                             <th scope="col" class="border">Phone</th>
                             <th scope="col" class="border">Purpose</th>
                             <th scope="col" class="border">Comment</th>
-                            <th scope="col" class="border">delete</th>
-                            <th scope="col" class="border">date</th>
+                            <th scope="col" class="border">Delete</th>
+                            <th scope="col" class="border">Date</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -275,7 +283,7 @@ $resM = mysqli_query($conn, $sql);
             </div>
         </div>
         <!-- ****************************** end new friends -->
-        <div class="tab-pane fade" id="members" role="tabpanel" aria-labelledby="nav-profile-tab">
+        <div class="tab-pane fade <?php if(isset($_GET['deleteMem'])){ echo "active show";} ?>" id="members" role="tabpanel" aria-labelledby="nav-profile-tab">
             <div class="container">
                 <div class="card my-5 ">
                     <div class="card-body h3 text-primary mx-auto"> Members </div>
@@ -287,8 +295,9 @@ $resM = mysqli_query($conn, $sql);
                             <th class="border" scope="col">use_id</th>
                             <th class="border" scope="col">Name</th>
                             <th class="border" scope="col">Last Name</th>
-                            <th class="border" scope="col">numPeople</th>
+                            <th class="border" scope="col">Phone</th>
                             <th class="border" scope="col">Email</th>
+                            <th class="border" scope="col">Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -301,6 +310,9 @@ $resM = mysqli_query($conn, $sql);
                                 <td class="border"><?php echo $rowM["lastname"] ?></td>
                                 <td class="border"><?php echo $rowM["phone"] ?> </td>
                                 <td class="border"><?php echo $rowM["email"] ?></td>
+                                <td><a href="loginPages.php?deleteM=<?php echo $rowM['user_id'] ?>" class="btn btn-danger btn-sm ">delete</a></td>
+
+
                             </tr>
                         <?php
                         }
