@@ -26,6 +26,16 @@ $conn2 = mysqli_connect("localhost", "root", "", "php_test");
 $sql2 = "SELECT * FROM invitefriends";
 $result2 = mysqli_query($conn2, $sql2);
 
+// delete Part//
+if (isset($_GET['deleteI'])) {
+    $id = $_GET['deleteI'];
+    $conn = mysqli_connect("localhost", "root", "", "php_test");
+    $sqldeleteI = "DELETE FROM invitefriends WHERE  user_id = '$id'";
+    mysqli_query($conn, $sqldeleteI);
+    header("location:loginPages.php?email=m@ms.com&deleteIn=true");
+}
+
+
 // ******************** list new friends page php **********************
 /////////////// showing new friends////////////////
 if (isset($_GET['email'])) {
@@ -121,10 +131,10 @@ $resM = mysqli_query($conn, $sql);
     <!-- ******************** nav inside**************8 -->
     <!-- <nav> -->
     <div class="nav nav-tabs container" id="nav-tab" role="tablist">
-        <a class="nav-item nav-link <?php if (!isset($_GET['go'])) {
+        <a class="nav-item nav-link <?php if (!isset($_GET['go']) & !isset($_GET['deleteIn'])) {
                                         echo 'active';
                                     } ?> " id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">contactUs</a>
-        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">inviterFriends</a>
+        <a class="nav-item nav-link <?php if(isset($_GET['deleteIn'])){echo 'active show';} ?>" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">inviterFriends</a>
         <a class="nav-item nav-link <?php if (isset($_GET['go'])) {
                                         echo 'active show';
                                     }  ?>" id="nav-contact-tab" data-toggle="tab" href="#newFriends" role="tab" aria-controls="nav-contact" aria-selected="false">New Friends</a>
@@ -137,7 +147,7 @@ $resM = mysqli_query($conn, $sql);
     <!--///////////////////////////// </nav> ///////////////////////-->
     <!-- ****************** cantact page************ -->
     <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane fade <?php if (!isset($_GET["go"])) {
+        <div class="tab-pane fade <?php if (!isset($_GET["go"]) & !isset($_GET['deleteIn'])) {
                                         echo 'active show';
                                     } ?>" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
             <div class="container" id="contactUs">
@@ -184,7 +194,7 @@ $resM = mysqli_query($conn, $sql);
             </div>
         </div>
         <!-- ***************************** Invinter Friends Page************ -->
-        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+        <div class="tab-pane fade <?php if(isset($_GET['deleteIn'])){ echo "active show";} ?> " id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
             <div class="container">
                 <div class="card my-5 ">
                     <div class="card-body h3 text-primary mx-auto">
@@ -196,10 +206,11 @@ $resM = mysqli_query($conn, $sql);
                         <tr>
                             <th class="border" scope="col">use_id</th>
                             <th class="border" scope="col">Name</th>
-                            <th class="border" scope="col">Last name</th>
+                            <th class="border" scope="col">Last Name</th>
                             <th class="border" scope="col">Email</th>
                             <th class="border" scope="col">Date</th>
-                            <th class="border" scope="col">numPeople</th>
+                            <th class="border" scope="col">NumPeople</th>
+                            <th class="border" scope="col">Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -213,6 +224,7 @@ $resM = mysqli_query($conn, $sql);
                                 <td class="border"><?php echo $row["email"] ?></td>
                                 <td class="border"><?php echo $row["date"] ?></td>
                                 <td class="border"><a href="loginPages.php?email=<?php echo $row['email'] ?>&go=newfriend "> <?php echo $row["numPeople"] ?> </a></td>
+                                <td><a href="loginPages.php?email=m@ms.com&deleteIn=true&deleteI=<?php echo $row['user_id'] ?>" class="btn btn-danger btn-sm ">delete</a></td>
                             </tr>
                         <?php
                         }
@@ -222,7 +234,9 @@ $resM = mysqli_query($conn, $sql);
             </div>
         </div>
         <!-- ****************************** New Friends List -->
-        <div class="tab-pane fade <?php if (isset($_GET['go'])) {echo "active show"; } ?>" id="newFriends" role="tabpanel" aria-labelledby="nav-contact-tab">
+        <div class="tab-pane fade <?php if (isset($_GET['go'])) {
+                                        echo "active show";
+                                    } ?>" id="newFriends" role="tabpanel" aria-labelledby="nav-contact-tab">
             <div class="container">
                 <div class="card-body bg-primary rounded h5 text-light">
                     <?php echo $resinviter['name'] . " " . $resinviter['lastname']; ?> introduce on <?php echo $resinviter['date'] ?> :
@@ -262,39 +276,40 @@ $resM = mysqli_query($conn, $sql);
         </div>
         <!-- ****************************** end new friends -->
         <div class="tab-pane fade" id="members" role="tabpanel" aria-labelledby="nav-profile-tab">
-        <div class="container">
-        <div class="card my-5 ">
-            <div class="card-body h3 text-primary mx-auto"> Members </div>
+            <div class="container">
+                <div class="card my-5 ">
+                    <div class="card-body h3 text-primary mx-auto"> Members </div>
+                </div>
+                <!-- //////////////////////start table's members /////////-->
+                <table class="table text-center border">
+                    <thead>
+                        <tr>
+                            <th class="border" scope="col">use_id</th>
+                            <th class="border" scope="col">Name</th>
+                            <th class="border" scope="col">Last Name</th>
+                            <th class="border" scope="col">numPeople</th>
+                            <th class="border" scope="col">Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        while ($rowM = mysqli_fetch_assoc($resM)) {
+                        ?>
+                            <tr>
+                                <th class="border" scope="row"><?php echo $rowM["user_id"] ?> </th>
+                                <td class="border"><?php echo $rowM["name"] ?></td>
+                                <td class="border"><?php echo $rowM["lastname"] ?></td>
+                                <td class="border"><?php echo $rowM["phone"] ?> </td>
+                                <td class="border"><?php echo $rowM["email"] ?></td>
+                            </tr>
+                        <?php
+                        }
+                        ?>
+                    </tbody>
+                </table>
+                <!-- end table's members -->
+            </div>
         </div>
-        <!-- //////////////////////start table's members /////////-->
-        <table class="table text-center border">
-            <thead>
-                <tr>
-                    <th class="border" scope="col">use_id</th>
-                    <th class="border" scope="col">Name</th>
-                    <th class="border" scope="col">Last name</th>
-                    <th class="border" scope="col">numPeople</th>
-                    <th class="border" scope="col">Email</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                while ($rowM = mysqli_fetch_assoc($resM)) {
-                ?>
-                    <tr>
-                        <th class="border" scope="row"><?php echo $rowM["user_id"] ?> </th>
-                        <td class="border"><?php echo $rowM["name"] ?></td>
-                        <td class="border"><?php echo $rowM["lastname"] ?></td>
-                        <td class="border"><?php echo $rowM["phone"] ?> </td>
-                        <td class="border"><?php echo $rowM["email"] ?></td>
-                    </tr>
-                <?php
-                }
-                ?>
-            </tbody>
-        </table>
-        <!-- end table's members -->
-    </div>        </div>
     </div>
 
 

@@ -129,7 +129,6 @@
         </div>
 
     </div>
-    <!-- <i class="fa fa-facebook "></i> -->
     <!-- footer -->
     <div class="footer-bottom">
         <article class="store-info" data-section-type="storeInfo">
