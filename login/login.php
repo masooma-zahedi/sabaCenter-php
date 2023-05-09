@@ -1,7 +1,41 @@
 <?php
+error_reporting(E_ALL ^ E_WARNING); 
+session_start();
+$conn = mysqli_connect("localhost", "root", "", "php_test");
+if ($_COOKIE['user_remember'] && $_COOKIE['user_pass']) {
+
+    $sql1 = "SELECT * FROM admin_tbl WHERE username = '$_COOKIE[user_remember]'";
+    $row1 = mysqli_query($conn, $sql1);
+    $res1 = mysqli_fetch_assoc($row1);
+    // var_dump($res1);
+    // die("333333");
+    if (SHA1($_COOKIE['user_pass']) == $res1['password']) {
+        
+        $_SESSION['name'] = $res1['username'];
+        // echo "good job";
+        header("location:loginPages.php?email=m@ms.com");
+    }
+
+}
+
+
 if (isset($_POST['btn'])) {
     $data = $_POST['frm'];
-    $conn = mysqli_connect("localhost", "root", "", "php_test");
+    $user_remember = $data["username"];
+    $user_pass = $data["password"];
+
+    //start " Remember Me Part"
+    if (isset($data['rememberme'])) {
+        setcookie("user_remember", $user_remember, time() + (60*60*2));
+        setcookie("user_pass", $user_pass, time() + (60*60*2));
+    } else {
+        echo "no remember";
+    }
+
+
+    // end "remember me part"
+
+
     $sql = "SELECT * FROM admin_tbl WHERE username = '$data[username]'";
     $row = mysqli_query($conn, $sql);
     $res = mysqli_fetch_assoc($row);
@@ -122,6 +156,9 @@ if (isset($_POST['btn'])) {
             <div class="form-group">
                 <label for="exampleInputPassword1">Password</label>
                 <input type="password" name="frm[password]" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <input type="checkbox" name="frm[rememberme]" class=""> Remember Me for 2 hours
             </div>
             <button type="submit" name="btn" class="btn btn-primary">Submit</button>
         </form>

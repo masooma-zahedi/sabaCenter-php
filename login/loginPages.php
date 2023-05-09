@@ -1,9 +1,9 @@
 <?php
 // you must fixed delete in cantact in loginPage.php
 date_default_timezone_set("America/Chicago");
+session_start();
 
 // ****************** contactUs page php**********
-session_start();
 if (isset($_SESSION['name'])) {
     // include_once("../functions/function.php");
     $conn1 = mysqli_connect("localhost", "root", "", "php_test");
