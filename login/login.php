@@ -166,7 +166,7 @@ if (isset($_POST['btn'])) {
     </div>
 
     <!-- footer -->
-    <div class="footer-bottom fixed-bottom">
+    <div class="footer-bottom ">
         <article class="store-info" data-section-type="storeInfo">
             <address>West Sam Houston Parkway South Suite 103, Houston, TX</address>
             713.974.808
